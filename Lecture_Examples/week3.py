@@ -71,4 +71,4 @@ def example4(src, dest, header):
 # test_string_formatting()
 # test_range_function()
 # example3()
-example4('file1.txt', "file2.txt", "This is the new header I added.\n")
+example4('week3_file1.txt', "week3_file2.txt", "This is the new header I added.\n")
