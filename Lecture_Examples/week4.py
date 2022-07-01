@@ -18,8 +18,13 @@ def example3(n):
         return 1
     return example3(n-1)+example3(n-2)
 
+def test_lambda():
+    t = (lambda x, y: x+y, 10, 11)  # Tuple storing a function and two integers
+    print(t[0](t[1], t[2])) # The function is called using the second and third value from the tuple as input parameters.
+
 # print(example1("Felix"))
 # print(example2(1234))
 # print(example2(143))
 # print(example2(9387503))
-print(example3(22))
+# print(example3(22))
+test_lambda()
