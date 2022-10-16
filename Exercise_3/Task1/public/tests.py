@@ -1,13 +1,6 @@
-# This enables us to write test cases.
-# Imports will be discussed later in the lecture.
 from unittest import TestCase
+import script
 
-# For now, only the following import matters. It
-# makes things from public/script.py available here.
-from public import script
-
-# Don't worry about this line, for now it just
-# marks the beginning of your Test Suite
 class PublicTestSuite(TestCase):
 
     # These functions are the individual tests. You
@@ -36,6 +29,10 @@ class PublicTestSuite(TestCase):
     # "Buzz". The test is very similar to the second
     # test case and it should pass if you hit
     # "Test & Run". Do not rename this test!
+    def test_three(self):
+        script.n = 5
+        res = script.fizz_buzz()
+        self.assertEqual(res, "Buzz")
 
     def test_five(self):
         pass # remove this line and write your test
@@ -49,4 +46,7 @@ class PublicTestSuite(TestCase):
 
     def test_fifteen(self):
         pass # remove this line and write your test
+
+t = PublicTestSuite()
+t.test_three()
 
