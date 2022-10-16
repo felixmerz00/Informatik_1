@@ -29,13 +29,11 @@ class PublicTestSuite(TestCase):
     # "Buzz". The test is very similar to the second
     # test case and it should pass if you hit
     # "Test & Run". Do not rename this test!
-    def test_three(self):
+
+    def test_five(self):
         script.n = 5
         res = script.fizz_buzz()
         self.assertEqual(res, "Buzz")
-
-    def test_five(self):
-        pass # remove this line and write your test
 
     # Finally, implement a fourth test case that
     # checks if given n = 15, the function correctly
@@ -45,8 +43,11 @@ class PublicTestSuite(TestCase):
     # fizz_buzz()! Do not rename this test.
 
     def test_fifteen(self):
-        pass # remove this line and write your test
+        script.n = 15
+        res = script.fizz_buzz()
+        self.assertEqual(res, "FizzBuzz")
 
 t = PublicTestSuite()
-t.test_three()
+t.test_five()
+t.test_fifteen()
 
