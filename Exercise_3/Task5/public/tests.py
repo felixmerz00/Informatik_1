@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from unittest import TestCase
 
-from public import script
+import script
 
 # This test suite only tests whether the value returned by
 # the solution function has the correct type. If this test
@@ -17,3 +17,15 @@ class PublicTestSuite(TestCase):
         actual = script.get_bmi_category()
         m = "The get_size function should return a string!"
         self.assertTrue(isinstance(actual, str), m)
+
+    def test_one(self):
+        script.height = 0
+        script.weight = 1
+        self.assertEqual(script.get_bmi_category(), "N/A")
+        script.height = 1
+        script.weight = 0
+        self.assertEqual(script.get_bmi_category(), "BMI: 0.00, Category: Underweight")
+
+t = PublicTestSuite()
+t.test_return_type()
+t.test_one()
