@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from unittest import TestCase
 
-from public import script
+import script
 
 # This test suite only tests whether the value returned by
 # the solution function has the correct type. If this test
@@ -17,4 +17,14 @@ class PublicTestSuite(TestCase):
         actual = script.rot_n()
         m = "The rot_n function should return a string!"
         self.assertTrue(isinstance(actual, str), m)
+    
+    def test_example(self):
+        script.plain_text = "a, B, z#!"
+        script.shift_by = 1
+        actual = script.rot_n()
+        expected = "b, C, a#!"
+        self.assertEqual(expected, actual)
 
+t = PublicTestSuite()
+t.test_case0()
+t.test_example()
