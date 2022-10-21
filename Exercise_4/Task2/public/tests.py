@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from unittest import TestCase
-from public.script import req_steps
+from script import req_steps
 
 
 class PublicTestSuite(TestCase):
