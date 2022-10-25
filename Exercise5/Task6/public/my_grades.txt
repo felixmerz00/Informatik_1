@@ -1,6 +1,0 @@
-info1:3
-
-# comment
-
-info2: 4
-
