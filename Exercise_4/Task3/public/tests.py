@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from unittest import TestCase
-from public.script import gcd
+from script import gcd
 
 
 class PublicTestSuite(TestCase):
