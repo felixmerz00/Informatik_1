@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from unittest import TestCase
-from public.script import invert
+from script import invert
 
 
 # This test suite does not exhaustively test the
@@ -19,3 +19,6 @@ class PublicTestSuite(TestCase):
         actual = invert({"a": 1, "b": 1, "c": 3})
         expected = {1: ["a", "b"], 3: ["c"]}
         self.assertEqual(expected, actual)
+
+t = PublicTestSuite()
+t.test_1()

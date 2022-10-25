@@ -4,7 +4,14 @@
 # Do not rename the function or change its list of parameters!
 def invert(d):
     # implement this function
-    pass
+    new_d = {}
+    for key in d:
+        cur_val = d[key]
+        if cur_val in new_d:
+            new_d[cur_val].append(key)
+        else:
+            new_d[cur_val] = [key]
+    return new_d
 
 
 # The following line calls the function and prints the return
