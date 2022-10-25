@@ -8,8 +8,13 @@ dataset = [
  ] 
 
 def reverse_index(dataset):
-    
     index_dictionary = {}
+    for i, s in enumerate(dataset):
+        s_list = s.split(' ')
+        for word in s_list:
+            if word in index_dictionary:
+
+    
 
     # don't forget to return your resulting dictionary
 
