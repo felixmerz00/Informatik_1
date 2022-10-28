@@ -12,21 +12,27 @@ def absolute_value(a):
 # This signature is required for the automated grading to work.
 # Do not rename the function or change its list of parameters!
 def gcd(a, b):
+    # implement this function
+    if a == 0 and b == 0:
+        return None
     if a < 0:
         a = absolute_value(a)
     if b < 0:
         b = absolute_value(b)
-    if a and b == 0:
-        return None
-    if a == 0:
-        return absolute_value(b)
-    if b == 0:
-        return absolute_value(a)
     
-    if a%b == 0:
-        return b
-    else:
-        return gcd(b, a%b)
+    if a >= b:
+        if(b == 0):
+            return absolute_value(a)
+        else:
+            return gcd(b, a % b)
+            # This function runs as long as a is not devidable by b.
+            # As soon as a is devidable by b, b which will be the new a is returned,
+            # because of the if statement above.
+    elif b > a:
+        if (a == 0):
+            return absolute_value(b)
+        else:
+            return gcd(a, b % a)
 
 
 # The following line calls the function and prints the return
