@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from unittest import TestCase
 
-from public import script
+import script
 
 # This test suite only tests whether the value returned by
 # the solution function has the correct type. If this test

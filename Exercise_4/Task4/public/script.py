@@ -12,44 +12,47 @@ INVALID_IP_STRING = "Some arbitrary string"
 
 #`a.b.c.d` where `a`, `b`, `c`, and `d` are integers between 0 and 255.
 def is_valid_IPv4_octet(octet: str):
-    """Returns True if octet represents a valid IPv4 octet, False otherwise"""
-    a = int(octet)
-    if octet < 0 and 255 < octet:
-        return False
-    else:
+    if int(octet) <= 255 and int(octet) >= 0:
         return True
+    else:
+        return False
+
 
 def is_valid_IPv4(ip: str):
-    """Returns True if ip represents a valid IPv4 address, False otherwise"""
-    i = ip.find(".")
-    a = ip[:i]
-    ip = ip[i+1:]
-    i = ip.find(".")
-    b = ip[:i]
-    ip = ip[i+1:]
-    i = ip.find(".")
-    c = ip[:i]
-    ip = ip[i+1:]
-    d = ip
-    return is_valid_IPv4_octet(a) and is_valid_IPv4_octet(b) and is_valid_IPv4_octet(c) and is_valid_IPv4_octet(d)
+    octets = ip.split(".")
+    if len(octets) != 4:
+        return False
+    for octet in octets:
+        if is_valid_IPv4_octet(octet) == False:
+            return False
+    return True
+
 
 def is_valid_IPv6_hextet(hextet: str):
-    """Returns True if hextet represents a valid IPv6 hextet, False otherwise"""
-    pass
+    hextet = int(hextet, 16)
+    if hextet >= 0 and hextet <= 65152:
+        return True
+    else:
+        return False
+
 
 def is_valid_IPv6(ip: str):
-    """Returns True if ip represents a valid IPv6 address, False otherwise"""
-    pass
+    hextets = ip.split(":")
+    if len(hextets) != 8:
+        return False
+    for hextet in hextets:
+        if is_valid_IPv6_hextet(hextet) == False:
+            return False
+    return True
+
 
 def is_valid_IP(ip: str):
-    """Returns True if ip represents a valid IPv4 or IPv6 address False otherwise"""
-    if(':' in ip):
-        ip_list = ip.split(':')
-        return is_valid_IPv6(ip)
-    elif('.' in ip):
-        ip_list = ip.split('.')
+    if "." in ip:
         return is_valid_IPv4(ip)
-    return False
+    elif ":" in ip:
+        return is_valid_IPv6(ip)
+    else:
+        return False
 
 
 # The following lines call is_valid_IP and print the result.
