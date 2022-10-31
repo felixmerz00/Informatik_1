@@ -11,7 +11,8 @@ def invert(d):
             new_d[cur_val].append(key)
         else:
             new_d[cur_val] = [key]
-    sorted(new_d)
+    for key in new_d:
+        new_d[key] = sorted(new_d[key])
     return new_d
 
 
@@ -19,4 +20,4 @@ def invert(d):
 # value to the Console. This way you can check what it does.
 # However, we encourage you to write tests, because then you
 # can easily test many different values on every "Test & Run"!
-print(invert({"a":1, "b":1, "c":3}))
+print(invert({"b": 1, "a": 1, "c": 3}))
