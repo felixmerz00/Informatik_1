@@ -11,6 +11,7 @@ def invert(d):
             new_d[cur_val].append(key)
         else:
             new_d[cur_val] = [key]
+    sorted(new_d)
     return new_d
 
 
