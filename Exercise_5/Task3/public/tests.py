@@ -1,5 +1,5 @@
 from unittest import TestCase
-from public import script
+import script
 
 class PrivateTestSuite(TestCase):
 
@@ -19,4 +19,23 @@ class PrivateTestSuite(TestCase):
         actual = script.reverse_index(dataset)
         message = "@@Expected return type is dict but {} is returned !@@".format(type(actual).__name__)
         self.assertIsInstance(actual,dict,message)
+
+    def test_input1(self):
+        dataset = [
+            "Hello world",
+            "This is the WORLD",
+            "hello again"
+        ]
+        actual = script.reverse_index(dataset)
+        assert(actual == {
+            'hello': [0, 2],
+            'world': [0, 1],
+            'this': [1],
+            'is': [1],
+            'the': [1],
+            'again':[2]})
+
+t = PrivateTestSuite()
+t.test_return_type_reverse_index()
+t.test_input1()
 
