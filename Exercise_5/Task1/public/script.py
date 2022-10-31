@@ -24,6 +24,7 @@ def merge(a, b):
             else:
                 mergelist.append((a[-1], b[i]))
 
+
     return mergelist
 
 
