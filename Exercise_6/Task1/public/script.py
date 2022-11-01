@@ -10,6 +10,11 @@ def build_string_pyramid():
     # create the correct 'encoded' string which will be returned
     # at the end of the function.
     s = ""
+    if h == 0:
+        return s
+    s = "1"
+    for i in range(h):
+        s = s + "\n" + s[(-1)*(h/2):] + "*" + str(i)
 
     # Enter your code here
     # use nested loops and the range() function
