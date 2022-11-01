@@ -12,9 +12,19 @@ def build_string_pyramid():
     s = ""
     if h == 0:
         return s
-    s = "1"
-    for i in range(h):
-        s = s + "\n" + s[(-1)*(h/2):] + "*" + str(i)
+    s = ""
+    for i in range(h):  # Upper half of pyramid
+        s += "1"
+        for j in range(2, i+2):
+            s = s + f"*{j}"
+        s += "\n"
+    
+    for i in range(h-1, 0, -1):    # Lower half of pyramid
+        s += "1"
+        for j in range(2, i+1):
+            s = s + f"*{j}"
+        s += "\n"
+    s = s[:-1]  # Take away the last newlie char
 
     # Enter your code here
     # use nested loops and the range() function

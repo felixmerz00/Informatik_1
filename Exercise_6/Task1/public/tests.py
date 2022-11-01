@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from unittest import TestCase
 
-from public import script
+import script
 
 # This test suite only tests whether the value returned by
 # the solution function has the correct type. If this test
@@ -18,3 +18,5 @@ class PublicTestSuite(TestCase):
         m = "The build_string_pyramid function should return a string!"
         self.assertTrue(isinstance(actual, str), m)
 
+t = PublicTestSuite()
+t.test_case0()
