@@ -8,24 +8,21 @@ import os
 def get_average_grade(path):
     if not os.path.exists(path):
         return None
+
     number_of_grades = 0
-    sum_of_grades = 0
-    with open(path, 'r') as f:
-        for line in f.readlines():
-            if line == "\n" or line[0] == '#':
-                continue
-            line = line.split(':')
-            line = line[1]
-            while not line[0].isdigit(): # Delete the spaceing infront of the grade
-                line = line[1:]
-            if "\n" in line:
-                line = line[:-1]    # Delete the newline char (the last line might not have a newline char)
-            grade = int(line)
-            sum_of_grades += grade
-            number_of_grades += 1
+    sum_grades = 0
+
+    with open(path, 'r') as file:
+        for line in file.readlines():
+            line_str = line.replace(' ', '')
+            if line_str[0] != '#' and ':' in line_str:
+                number_of_grades += 1
+                list = line_str.split(':')
+                sum_grades = sum_grades + float(list[1])
+    
     if number_of_grades == 0:
         return 0.0
-    return round(sum_of_grades/number_of_grades, 2)
+    return sum_grades / number_of_grades
 
 
 # The following line calls the function and prints the return
