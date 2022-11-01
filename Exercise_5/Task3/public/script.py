@@ -13,7 +13,7 @@ def reverse_index(dataset):
         s_list = s.split(' ')
         for word in s_list:
             if word in index_dictionary:
-
+                index_dictionary[]
     
 
     # don't forget to return your resulting dictionary
