@@ -7,25 +7,36 @@ import os
 def process_data(path_reading, path_writing):
     if not os.path.exists(path_reading):
         # what to do if the input file does not exist?
-        pass
-    name_list = []  # List of (Firstname, Lastname) tuples
+        return False
+
+    # If the input file does exist, but is empty, 
+    # an empty output file should be written.
+    if os.stat(path_reading).st_size == 0:
+        with open(path_writing, 'w') as f2:
+            f2.write('')
+            return
+
+    name_list = []  # List of Stings in the format "Firstname,Lastname"
+    # Read the names from the file and save them in name_list
     with open(path_reading, 'r') as f1:
         f1.readline()
         for line in f1.readlines():
             if line == "\n":
-                continue
+                name_list.append(",")
             elif ';' in line: # Split by semicolon
                 name = line.split(';')
                 name[1] = name[1][1:]
+                name_list.append(f"{name[1]},{name[0]}")
             else:   # Split by space
                 name = line.split()
-            name_list.append((name[0], name[1]))
-    print(name_list)
+                name_list.append(f"{name[0]},{name[1]}")
             
     # Read data from file
     # Write a file with header Firstname, Lastname
     with open(path_writing, 'w') as f2:
-        pass
+        f2.write("Firstname,Lastname")
+        for name in name_list:
+            f2.write(f"\n{name}")
 
 
 

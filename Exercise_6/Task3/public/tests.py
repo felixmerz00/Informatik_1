@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
 from unittest import TestCase
-from public.script import process_data
+from script import process_data
 import os
 
-INPUT_FILE = "public/my_data.txt"
-OUTPUT_FILE = "public/my_data_processed.txt"
+
+INPUT_FILE = "/Users/felixmerz/Documents/Git_Repositories/Informatik_1/Exercise_6/Task3/public/my_data.txt"
+OUTPUT_FILE = "/Users/felixmerz/Documents/Git_Repositories/Informatik_1/Exercise_6/Task3/public/my_data_processed.txt"
 
 class PublicTestSuite(TestCase):
 
@@ -28,4 +29,9 @@ class PublicTestSuite(TestCase):
         actual = process_data("public/non_existing_file.txt", OUTPUT_FILE)
         expected = False
         self.assertEqual(expected, actual)
+
+t = PublicTestSuite()
+t.setUp()
+t.test_example_file()
+t.test_non_existing_file()
 
