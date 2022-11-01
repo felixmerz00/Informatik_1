@@ -20,5 +20,11 @@ class PublicTestSuite(TestCase):
         expected = {1: ["a", "b"], 3: ["c"]}
         self.assertEqual(expected, actual)
 
+    def test_sort(self):
+        actual = invert({"b": 1, "a": 1, "c": 3})
+        expected = {1: ["a", "b"], 3: ["c"]}
+        self.assertEqual(expected, actual)
+
 t = PublicTestSuite()
 t.test_1()
+t.test_sort()
