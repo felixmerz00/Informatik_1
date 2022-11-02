@@ -3,7 +3,24 @@
 # This signature is required for the automated grading to work. 
 # Do not rename the function or change its list of parameters.
 def analyze(posts):
-    pass
+    out_dict = {}
+    for post in posts:
+        post = post.split()
+        for word in post:
+            if word[0] == '#':
+                # A non digit or non alpha char terminates the hashtag
+                end_index = 1
+                while(end_index < len(word) and (word[end_index].isdigit() or word[end_index].isalpha())):
+                    end_index += 1
+                word = word[1:end_index]    # Cut away the # symbol
+                if word == "":  # If there are two consequtive hashtags, the word might be empty
+                    continue
+                if not word in out_dict:
+                    out_dict[word] = 1
+                else:
+                    out_dict[word] += 1
+    return out_dict
+
 
 
 # The following line calls the function and prints the return

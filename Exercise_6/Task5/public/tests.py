@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from unittest import TestCase
-from public.script import analyze
+from script import analyze
 
 # This test suite does not exhaustively test the implementation,
 # a passing "test & run" does not mean that all possible cases
@@ -21,3 +21,34 @@ class PublicTestSuite(TestCase):
                           "#zurich <3"])
         expected = {'weekend': 2, 'zurich': 3, 'limmat': 1}
         self.assertEqual(expected, actual)
+
+    def test_hashtag_with_non_ascii(self):
+        actual = analyze(["hi #week.end",
+                          "good morning #zurich #limmat",
+                          "spend my #weekend in #zurich",
+                          "#zurich <3"])
+        expected = {'week':1, 'weekend': 1, 'zurich': 3, 'limmat': 1}
+        self.assertEqual(expected, actual)
+    
+    def test_two_consecutive_hashtags(self):
+        actual = analyze(["hi ##weekend",
+                          "good morning #zurich #limmat",
+                          "spend my #weekend in #zurich",
+                          "#zurich <3"])
+        expected = {'zurich': 3, 'limmat': 1, 'weekend': 1}
+        self.assertEqual(expected, actual)
+
+    def test_with_one_char(self):
+        actual = analyze(["hi #weekend #w",
+                          "good morning #zurich #limmat",
+                          "spend my #weekend in #zurich",
+                          "#zurich <3"])
+        expected = {'weekend': 2, 'w':1, 'zurich': 3, 'limmat': 1}
+        self.assertEqual(expected, actual)
+        
+
+t = PublicTestSuite()
+t.test_1()
+t.test_hashtag_with_non_ascii()
+t.test_two_consecutive_hashtags()
+t.test_with_one_char()
