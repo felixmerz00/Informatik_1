@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from unittest import TestCase
-from public.script import compress
+from script import compress
 
 # This test suite does not exhaustively test the implementation,
 # a passing "test & run" does not mean that all possible cases
@@ -26,3 +26,18 @@ class PublicTestSuite(TestCase):
             ]
         )
         self.assertEqual(expected, actual)
+    
+    def test_empty_list(self):
+        actual = compress([])
+        expected = ((),[])
+        self.assertEqual(expected, actual)
+
+    def test_empty_dicts(self):
+        actual = compress([{}, {}])
+        expected = ((),[(), ()])
+        self.assertEqual(expected, actual)
+
+t = PublicTestSuite()
+t.test_1()
+t.test_empty_list()
+t.test_empty_dicts()
