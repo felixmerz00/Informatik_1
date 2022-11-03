@@ -45,6 +45,8 @@ class PublicTestSuite(TestCase):
                           "#zurich <3"])
         expected = {'weekend': 2, 'w':1, 'zurich': 3, 'limmat': 1}
         self.assertEqual(expected, actual)
+    
+    # Hint: Hashtag extraction is not correct for '.#c.'.
         
 
 t = PublicTestSuite()
