@@ -3,7 +3,7 @@
 # use this list of presumably known Whatsapp numbers to check
 # whether a trial nr from the function below exists in Whatsapp.
 # Note that the grading framework might use different numbers here.
-wa_nrs = []
+wa_nrs = ["0781111119", "0792653913", "0797763139", "0792793193", "0781139022", "0764320165"]
 
 
 # This signature is required for the automated grading to work. 
@@ -18,7 +18,7 @@ def get_possible_nrs(n):
 
     for i in range(2, 10):
         for j in range(10):
-            possible_numbers.append(n[:2] + str(j) + n[2:])   # All possible numbers
+            possible_numbers.append(n[:i] + str(j) + n[i:])   # All possible numbers
     # Delete possible numbers not connected to WhatsApp
     for number in possible_numbers:
         if number in wa_nrs:
