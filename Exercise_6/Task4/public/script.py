@@ -17,7 +17,6 @@ def compress(data):
         value_list.append(tuple(values_of_key))
     out_t = (key_tuple, value_list)
     return out_t
-        
 
 
 # The following line calls the function and prints the return
