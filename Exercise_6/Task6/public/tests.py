@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from unittest import TestCase
-from public import script
+import script
 
 # This test suite does not exhaustively test the implementation,
 # a passing "test & run" does not mean that all possible cases
@@ -18,3 +18,6 @@ class PublicTestSuite(TestCase):
         
         actual = script.get_possible_nrs("077342119")
         self.assertEqual([], actual, "script should not find any number on an empty wa_nrs list")
+
+t = PublicTestSuite()
+t.test_1()
