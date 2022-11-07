@@ -4,9 +4,9 @@
 # Do not rename the function or change its list of parameters.
 def analyze(posts):
     out_dict = {}
-    for post in posts:
-        post = post.split()
-        for word in post:
+    for post in posts:  # Iterate over strings in given list
+        post = post.split() # Separate string into individual words
+        for word in post:   # Iterate over words in the given string
             if word[0] == '#':
                 # A non digit or non alpha char terminates the hashtag
                 end_index = 1
