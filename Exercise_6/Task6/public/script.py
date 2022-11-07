@@ -22,8 +22,8 @@ def get_possible_nrs(n):
     # Delete possible numbers not connected to WhatsApp
     for number in possible_numbers:
         if number in wa_nrs:
-            possible_nrs_for_juliet.append(number)
-    return possible_nrs_for_juliet
+            possible_nrs_for_juliet.append(number)  
+    return list(dict.fromkeys(possible_nrs_for_juliet)) # Remove duplicates from list
 
 # For this particular number, the function should find the
 # last element in wa_nrs
