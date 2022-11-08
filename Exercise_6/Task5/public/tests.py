@@ -35,7 +35,7 @@ class PublicTestSuite(TestCase):
                           "good morning #zurich #limmat",
                           "spend my #weekend in #zurich",
                           "#zurich <3"])
-        expected = {'zurich': 3, 'limmat': 1, 'weekend': 1}
+        expected = {'weekend': 2, 'zurich': 3, 'limmat': 1}
         self.assertEqual(expected, actual)
 
     def test_with_one_char(self):
@@ -45,8 +45,18 @@ class PublicTestSuite(TestCase):
                           "#zurich <3"])
         expected = {'weekend': 2, 'w':1, 'zurich': 3, 'limmat': 1}
         self.assertEqual(expected, actual)
-    
+
     # Hint: Hashtag extraction is not correct for '.#c.'.
+    def test_hint1(self):
+        actual = analyze([".#c."])
+        expected = {'c':1}
+        self.assertEqual(expected, actual)
+    
+    def test_only_hashtag_in_word(self):
+        actual = analyze(["#"])
+        expected = {}
+        self.assertEqual(expected, actual)
+    
         
 
 t = PublicTestSuite()
@@ -54,3 +64,5 @@ t.test_1()
 t.test_hashtag_with_non_ascii()
 t.test_two_consecutive_hashtags()
 t.test_with_one_char()
+t.test_hint1()
+t.test_only_hashtag_in_word()

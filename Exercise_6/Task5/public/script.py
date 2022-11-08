@@ -5,17 +5,25 @@
 def analyze(posts):
     out_dict = {}
     for post in posts:  # Iterate over strings in given list
-        post = post.split() # Separate string into individual words
+        post = post.split(' ') # Separate string into individual words
         for word in post:   # Iterate over words in the given string
-            if word[0] == '#':
-                # A non digit or non alpha char terminates the hashtag
-                end_index = 1
-                while(end_index < len(word) and (word[end_index].isdigit() or word[end_index].isalpha())):
-                    end_index += 1
-                word = word[1:end_index]    # Cut away the # symbol
+            if '#'in word:
+                # Cut away all non digit and non alpha chars at the beginning of the word
+                while(not word[0].isdigit() and not word[0].isalpha()):
+                    word = word[1:]
+                # If start_index == len(word), the hashtag is empty. E.g.: for a word "#####"
+                # Cut away all non digit or non alpha chars at the end of the word
+                while(not word[len(word)-1].isdigit() and not word[len(word)-1].isalpha()):
+                    word = word[:len(word)-1]
+                # Find non ascii chars in the middle of the word which would terminate the string
+                for i in range(len(word)):
+                    if not word[i].isdigit or not word[i].isalpha():
+                        word = word[:i]
+                        break
+
                 if word == "":  # If there are two consequtive hashtags, the word might be empty
                     continue
-                if not word in out_dict:
+                elif not word in out_dict:
                     out_dict[word] = 1
                 else:
                     out_dict[word] += 1
@@ -32,4 +40,4 @@ posts = [
     "good morning #zurich #limmat",
     "spend my #weekend in #zurich",
     "#zurich <3"]
-print(analyze(posts))
+# print(analyze(posts))
