@@ -14,9 +14,9 @@ The goal is to gradually improve the `convert_roman_to_int` function.
 Take the specification below as an orientation of what to use as test cases in the workflow described above.
 
 ## Specification / Orientation for test driven iterations
-- The function `convert_roman_to_int` accepts a string and returns an integer value
-- Given very simple string numerals like e.g. `"I"` or `"X"` it returns the correct integer value (1, or 10 respectively)
-- Check that this works for all roman numerals `"I"`, `"V"`, `"X"`, `"L"`, `"C"`, "`"D"`, `"M"`
+- The function `convert_roman_to_int` accepts a string and returns an integer value check
+- Given very simple string numerals like e.g. `"I"` or `"X"` it returns the correct integer value (1, or 10 respectively) check
+- Check that this works for all roman numerals `"I"`, `"V"`, `"X"`, `"L"`, `"C"`, "`"D"`, `"M"` check
 - Check that basic additive numerals return the correct results, e.g. `convert_roman_to_int("XI")` returns 11
 - Check that basic subtractive notation works correctly, e.g. `"IV"` is 4, `"XL"` is 40 and `"CD"` is 400,
     `"IX"` is 9, `"XC"` is 90 and `"CM"` is 900.

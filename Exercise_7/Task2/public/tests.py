@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from unittest import TestCase
-from public.script import convert_roman_to_int
+from script import convert_roman_to_int
 
 
 # You are supposed to develop the functionality in a test-driven way.
@@ -47,22 +47,17 @@ class ConversionTestSuite(TestCase):
 
     def test_simple_additive2(self):
         self._assert("MD", 1500)
+    
+    def test_return_type(self):
+        self.assertIsInstance(convert_roman_to_int("I"), int)
 
+t = ConversionTestSuite()
+t.test_simple_numeralI()
+t.test_simple_numeralV()
+t.test_simple_numeralX()
+t.test_simple_numeralL()
+t.test_simple_numeralC()
+t.test_simple_numeralD()
+t.test_simple_numeralM()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+t.test_return_type()

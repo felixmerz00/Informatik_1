@@ -26,12 +26,14 @@ def convert_roman_to_int(roman):
         "CM": 900
     }
     num = 0
+    if roman in roman_single_digits:
+        return roman_single_digits[roman]
 
     return num
 
 
 # The following lines calls the function and prints the return
 # value to the Console.
-i = convert_roman_to_int("XV")
-print(i)
+# i = convert_roman_to_int("XV")
+# print(i)
 
