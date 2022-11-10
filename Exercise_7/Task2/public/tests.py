@@ -50,6 +50,40 @@ class ConversionTestSuite(TestCase):
     
     def test_return_type(self):
         self.assertIsInstance(convert_roman_to_int("I"), int)
+    
+    def test_basic_subtractive1(self):
+        self._assert('IV', 4)
+    
+    def test_basic_subtractive2(self):
+        self._assert('XL', 40)
+    
+    def test_basic_subtractive3(self):
+        self._assert('CD', 400)
+    
+    def test_basic_subtractive4(self):
+        self._assert('IX', 9)
+    
+    def test_basic_subtractive5(self):
+        self._assert('XC', 90)
+    
+    def test_basic_subtractive6(self):
+        self._assert('CM', 900)
+
+    def test_longer_additive1(self):
+        self._assert('VIII', 8)
+    
+    def test_longer_additive2(self):
+        self._assert('MDC', 1600)
+
+    def test_combi_add_sub1(self):
+        self._assert('XIV', 14)
+
+    def test_combi_add_sub2(self):
+        self._assert('XLI', 41)
+    
+    def test_invalid_input1(self):
+        with self.assertWarns(Warning):
+            convert_roman_to_int('XLS')
 
 t = ConversionTestSuite()
 t.test_simple_numeralI()
@@ -59,5 +93,19 @@ t.test_simple_numeralL()
 t.test_simple_numeralC()
 t.test_simple_numeralD()
 t.test_simple_numeralM()
-
+t.test_simple_additive1()
+t.test_simple_additive2()
 t.test_return_type()
+t.test_basic_subtractive1()
+t.test_basic_subtractive2()
+t.test_basic_subtractive3()
+t.test_basic_subtractive4()
+t.test_basic_subtractive5()
+t.test_basic_subtractive6()
+t.test_longer_additive1()
+t.test_longer_additive2()
+t.test_combi_add_sub1()
+t.test_combi_add_sub2()
+t.test_invalid_input1()
+
+

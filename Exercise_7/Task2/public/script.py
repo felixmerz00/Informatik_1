@@ -25,9 +25,20 @@ def convert_roman_to_int(roman):
         "CD": 400,
         "CM": 900
     }
+
+    for letter in roman:
+        if not letter in roman_single_digits:
+            raise Warning("Invalid Input")
+    
+    i = 0
     num = 0
-    if roman in roman_single_digits:
-        return roman_single_digits[roman]
+    while i < len(roman):
+        if i+1 < len(roman) and roman[i:i+2] in roman_double_digits:
+            num += roman_double_digits[roman[i:i+2]]
+            i += 2
+        else:
+            num += roman_single_digits[roman[i:i+1]]
+            i += 1
 
     return num
 

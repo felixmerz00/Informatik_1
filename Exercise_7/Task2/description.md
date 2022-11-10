@@ -14,15 +14,15 @@ The goal is to gradually improve the `convert_roman_to_int` function.
 Take the specification below as an orientation of what to use as test cases in the workflow described above.
 
 ## Specification / Orientation for test driven iterations
-- The function `convert_roman_to_int` accepts a string and returns an integer value check
+- The function `convert_roman_to_int` accepts a string and returns an integer value
 - Given very simple string numerals like e.g. `"I"` or `"X"` it returns the correct integer value (1, or 10 respectively) check
 - Check that this works for all roman numerals `"I"`, `"V"`, `"X"`, `"L"`, `"C"`, "`"D"`, `"M"` check
-- Check that basic additive numerals return the correct results, e.g. `convert_roman_to_int("XI")` returns 11
+- Check that basic additive numerals return the correct results, e.g. `convert_roman_to_int("XI")` returns 11 check
 - Check that basic subtractive notation works correctly, e.g. `"IV"` is 4, `"XL"` is 40 and `"CD"` is 400,
-    `"IX"` is 9, `"XC"` is 90 and `"CM"` is 900.
-- Check that longer additive numerals like `"VIII"`, `"MDC"` etc. give the correct results.
+    `"IX"` is 9, `"XC"` is 90 and `"CM"` is 900. check
+- Check that longer additive numerals like `"VIII"`, `"MDC"` etc. give the correct results. check
 - Check that numerals that include both additive and subtractive elements work correctly, e.g. `"XIV"` is 14,
- `"XLI"` is 41 etc.
+ `"XLI"` is 41 etc. check
 - Check that numerals that do not contain the 7 valid roman numerals (e.g. "XLS") raise a Warning by the statement
 `raise Warning("Invalid Input")` (You must use this warning statement for all following invalid input cases)
 - Check that numerals of an incorrect format (smaller-valued letters before larger-valued ones, like `"IIMX"`, `"IVII"` etc)
