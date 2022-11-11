@@ -82,8 +82,9 @@ class ConversionTestSuite(TestCase):
         self._assert('XLI', 41)
     
     def test_invalid_input1(self):
-        with self.assertWarns(Warning):
+        with self.assertRaises(Warning, msg = "A Warning should have been raised."): 
             convert_roman_to_int('XLS')
+            
 
 t = ConversionTestSuite()
 t.test_simple_numeralI()
@@ -107,5 +108,3 @@ t.test_longer_additive2()
 t.test_combi_add_sub1()
 t.test_combi_add_sub2()
 t.test_invalid_input1()
-
-
