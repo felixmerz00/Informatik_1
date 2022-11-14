@@ -75,10 +75,10 @@ class ConversionTestSuite(TestCase):
     def test_longer_additive2(self):
         self._assert('MDC', 1600)
 
-    def test_combi_add_sub1(self):
+    def test_combination_addition_subtraction1(self):
         self._assert('XIV', 14)
 
-    def test_combi_add_sub2(self):
+    def test_combination_addition_subtraction2(self):
         self._assert('XLI', 41)
     
     def test_invalid_input1(self):
@@ -105,6 +105,6 @@ t.test_basic_subtractive5()
 t.test_basic_subtractive6()
 t.test_longer_additive1()
 t.test_longer_additive2()
-t.test_combi_add_sub1()
-t.test_combi_add_sub2()
+t.test_combination_addition_subtraction1()
+t.test_combination_addition_subtraction2()
 t.test_invalid_input1()
