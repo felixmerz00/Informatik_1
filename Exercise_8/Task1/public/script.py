@@ -21,7 +21,7 @@ class ProfanityFilter:
         msg_list = msg.split()
         for word_index in range(len(msg_list)):
             for profanity in self.keywords:
-                if profanity in msg_list[word_index]:
+                if profanity in msg_list[word_index]:   # It must be case insensitive
                     msg_list[word_index] = msg_list[word_index].replace(profanity, self.__clean(profanity))
         return " ".join(msg_list)
 
@@ -29,8 +29,8 @@ class ProfanityFilter:
 
 # You can play around with your implementation in the body of the following 'if'.
 # The contained statements will be ignored while evaluating your solution.
-if __name__ == '__main__':
-    f = ProfanityFilter(["duck", "shot", "batch", "mastard"], "?#$")
-    offensive_msg = "abc defghi mastard jklmno"
-    clean_msg = f.filter(offensive_msg)
-    print(clean_msg)  # abc defghi ?#$?#$? jklmno
+#if __name__ == '__main__':
+#    f = ProfanityFilter(["duck", "shot", "batch", "mastard"], "?#$")
+#    offensive_msg = "abc defghi mastard jklmno"
+#    clean_msg = f.filter(offensive_msg)
+#    print(clean_msg)  # abc defghi ?#$?#$? jklmno
