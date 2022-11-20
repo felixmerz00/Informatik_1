@@ -45,9 +45,9 @@ class PublicTestSuite(TestCase):
         expected = "abc defghi hel?#$?#$?lo jklmno"
         self.assertEqual(expected, actual) 
 
-    # Profanity contains each other as substrings
+    # Profanity is concatenation of other profanities
     def test_profanity_contains_each_other1(self):
-        f = ProfanityFilter(["duck", "shotduck" "shot", "batch", "mastard"], "?#$")
+        f = ProfanityFilter(["duck", "shotduck", "shot", "batch", "mastard"], "?#$")
         msg = "abc defghi shotduck jklmno"
         actual = f.filter(msg)
         expected = "abc defghi ?#$?#$?# jklmno"
@@ -61,6 +61,23 @@ class PublicTestSuite(TestCase):
         expected = "abc defghi hel?#$?#$?lo jklmno"
         self.assertEqual(expected, actual) 
 
+    # One profanity in the middle of one word twice with different casing
+    def test_complex2(self):
+        f = ProfanityFilter(["duck", "shot", "batch", "mastard"], "?#$")
+        msg = "abc defghi mastard jklShoTshOtmno"
+        actual = f.filter(msg)
+        expected = "abc defghi ?#$?#$? jkl?#$??#$?mno"
+        self.assertEqual(expected, actual)
+
+    # Test upper case profanity list
+    def test_upper_case_profanity(self):
+        f = ProfanityFilter(["Duck", "Shot", "Batch", "Mastard"], "?#$")
+        msg = "abc defghi mastard jklmno"
+        actual = f.filter(msg)
+        expected = "abc defghi ?#$?#$? jklmno"
+        self.assertEqual(expected, actual)
+
+
 t = PublicTestSuite()
 t.test_example()
 t.test_empty_list1()
@@ -68,4 +85,6 @@ t.test_empty_msg1()
 t.test_case_sensitivity1()
 t.test_subword()
 t.test_profanity_contains_each_other1()
-#t.test_complex1()
+t.test_complex1()
+t.test_complex2()
+t.test_upper_case_profanity()

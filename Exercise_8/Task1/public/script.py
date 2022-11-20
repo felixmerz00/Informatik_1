@@ -7,22 +7,30 @@ class ProfanityFilter:
 
     def __init__(self, keywords, template):
         # Save the keywords in an instance variable sorted by the length of the word in decreasing order
-        self.keywords = sorted(keywords, key = lambda word: len(word), reverse = True)
-        self.template = template
+        self.__keywords = sorted(keywords, key = len, reverse = True)
+        for i, keyword in enumerate(self.__keywords):
+            self.__keywords[i] = keyword.lower()
+        self.__template = template
     
     def __clean(self, profanity):
         # E.g. template = ":***#", profanity = motherfucker, 
         # ":***#" * (12//5) + ":***#"[:12%5] 
         # = ":***#" * 2 + ":***#"[:2] 
         # = ":***#:***#:*"
-        return self.template * (len(profanity)//len(self.template)) + self.template[:len(profanity)%len(self.template)]
+        return self.__template * (len(profanity)//len(self.__template)) + self.__template[:len(profanity)%len(self.__template)]
 
     def filter(self, msg):
         msg_list = msg.split()
         for word_index in range(len(msg_list)):
-            for profanity in self.keywords:
-                if profanity in msg_list[word_index]:   # It must be case insensitive
-                    msg_list[word_index] = msg_list[word_index].replace(profanity, self.__clean(profanity))
+            for profanity in self.__keywords:
+                current_word_lower = msg_list[word_index].lower()
+                while profanity in current_word_lower:   # It must be case insensitive
+                    # Find the sequence of the profanity in the current word
+                    # I want to get the exact sequence with the correct caseing
+                    i_profanity = current_word_lower.find(profanity)    # Get the start index of profanity
+                    current_profanity = msg_list[word_index][i_profanity:i_profanity+len(profanity)]
+                    msg_list[word_index] = msg_list[word_index].replace(current_profanity, self.__clean(profanity))
+                    current_word_lower = msg_list[word_index].lower()
         return " ".join(msg_list)
 
 
