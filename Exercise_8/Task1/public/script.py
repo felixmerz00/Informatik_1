@@ -34,4 +34,3 @@ class ProfanityFilter:
 #    offensive_msg = "abc defghi mastard jklmno"
 #    clean_msg = f.filter(offensive_msg)
 #    print(clean_msg)  # abc defghi ?#$?#$? jklmno
-
