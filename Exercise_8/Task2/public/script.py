@@ -6,10 +6,89 @@
 class Publication:
 
     def __init__(self, authors, title, year):
-        pass
+        self.__authors = authors
+        self.__title = title
+        self.__year = year
 
-    # To implement the required functionality, you will also have to implement several
-    # of the special functions that typically include a double underscore.
+    def __str__(self):
+        representation = f"Publication({self.__authors}, \"{self.__title}\", {self.__year})"
+        return representation.replace("'", "\"")
+
+    def __repr__(self):
+        representation = f"Publication({self.__authors}, \"{self.__title}\", {self.__year})"
+        return representation.replace("'", "\"")
+
+    def __hash__(self):
+        return hash((tuple(self.__authors), self.__title, self.__year)) # Returns the hash value for the (names, title, year) tuple.
+
+    def __eq__(self, other):
+        if isinstance(self, other.__class__):
+            if sorted(other.get_authors()) == sorted(self.__authors) and other.get_title() == self.__title and other.get_year() == self.__year:
+                return True
+            else:
+                return False
+        else: 
+            return NotImplemented
+
+    def get_authors(self):
+        copy = []
+        for i in self.__authors:
+            copy.append(i)
+        return copy
+
+    def get_title(self):
+        return self.__title
+
+    def get_year(self):
+        return self.__year
+
+    # !=
+    def __ne__(self, other):
+        if isinstance(self, other.__class__):
+            return False if sorted(other.get_authors()) == sorted(self.__authors) and other.get_title() == self.__title and other.get_year() == self.__year else True
+        else: return NotImplemented
+
+    # >
+    def __lt__(self,other):
+        if isinstance(self, other.__class__):
+            if sorted(self.__authors) == sorted(other.get_authors()):
+                # If the author list is identical, compare titles 
+                if self.__title == other.get_title():
+                    # If the titles are identical, compare years
+                    return self.__year > other.get_year()
+                else: return self.__title > other.get_title()
+            else: return sorted(self.__authors) > sorted(other.get_authors())
+        else: return NotImplemented
+        
+    # >=
+    def __le__(self,other):
+        if isinstance(self, other.__class__):
+            if sorted(self.__authors) == sorted(other.get_authors()):
+                if self.__title == other.get_title():
+                    return self.__year >= other.get_year()
+                else: return self.__title >= other.get_title()
+            else: return sorted(self.__authors) >= sorted(other.get_authors())
+        else: return NotImplemented
+
+    # <
+    def __lt__(self,other):
+        if isinstance(self, other.__class__):
+            if sorted(self.__authors) == sorted(other.get_authors()):
+                if self.__title == other.get_title():
+                    return self.__year < other.get_year()
+                else: return self.__title < other.get_title()
+            else: return sorted(self.__authors) < sorted(other.get_authors())
+        else: return NotImplemented
+
+    # <=
+    def __le__(self,other):
+        if isinstance(self, other.__class__):
+            if sorted(self.__authors) == sorted(other.get_authors()):
+                if self.__title == other.get_title():
+                    return self.__year <= other.get_year()
+                else: return self.__title <= other.get_title()
+            else: return sorted(self.__authors) <= sorted(other.get_authors())
+        else: return NotImplemented
 
 
 # You can play around with your implementation in the body of the following 'if'.
