@@ -5,22 +5,36 @@ from public.order import Order
 class Restaurant:
 
     def __init__(self, restaurant_name, menu_list):
-        pass
+        self.__name = restaurant_name
+        self.__menu = menu_list
+        self.__oders = []
 
     def get_restaurant_name(self):
-        pass
+        return self.__name
 
     def get_menu_list(self):
-        pass
-
+        return self.__menu.copy()
+    
     def get_order_list(self):
-        pass
-
+        if len(self.__oders) != 0: 
+            return self.__oders.copy()
+        return "No order yet" 
+    
     def set_order(self, item_list):
-        pass
+        valid_items = []
+        for item in item_list:
+            if item in self.__menu:
+                valid_items.append(item)
+
+        # If all ordered items are invalid, the list is empty now and no Order object should be created.
+        if valid_items: 
+            self.__oders.append(Order(valid_items))
 
     def get_revenue(self):
-        pass
+        revenue = 0
+        for order in self.__oders: 
+            revenue += order.get_bill_amount()
+        return revenue
 
 
 # You can play around with your implementation in the body of the following 'if'.
