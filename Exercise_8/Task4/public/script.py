@@ -23,8 +23,8 @@ class MagicDrawingBoard:
     def rect(self, coordinate_top_left, coordinate_bottom_right):
         try:
             # Add minus 1 because the end coordinates should be "exclusive".
-            width = coordinate_bottom_right[0] - 1 - coordinate_top_left[0]
-            height = coordinate_bottom_right[1] - 1 - coordinate_top_left[1]
+            width = coordinate_bottom_right[0] - coordinate_top_left[0] - 1
+            height = coordinate_bottom_right[1] - coordinate_top_left[1] - 1
         except:
             raise Warning("Invalid Coordinates.")
 
