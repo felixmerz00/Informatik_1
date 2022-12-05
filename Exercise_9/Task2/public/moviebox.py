@@ -6,7 +6,7 @@
 
 from public.movie import Movie
 
-class MovieBox:
+class MovieBox(Movie):
 
     def __init__(self, title, movies):
         if not title or not movies:

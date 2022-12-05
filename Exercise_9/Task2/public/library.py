@@ -7,7 +7,7 @@
 from public.movie import Movie
 from public.moviebox import MovieBox
 
-class Library:
+class Library(MovieBox):
 
     # Create private variables 
     def __init__(self):
