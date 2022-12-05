@@ -7,5 +7,20 @@
 
 from public.character import Character
 
-class Mage:
-    pass
+class Mage(Character):
+
+    def _get_caused_dmg(self, other):
+        return round(1.25*super()._get_caused_dmg(other))
+
+    def attack(self, other):
+        assert isinstance(other, Character)
+        assert self is not other
+        if not self.is_alive():
+            raise Warning("The character is dead")
+        other._take_magical_damage(self._get_caused_dmg(other))
+
+    def _take_physical_damage(self, amount):
+        return super()._take_physical_damage(round(amount*1.5))
+
+    def _take_magical_damage(self, amount):
+        return super()._take_magical_damage(round(amount*1.5))

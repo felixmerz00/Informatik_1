@@ -7,5 +7,10 @@
 
 from public.character import Character
 
-class Knight:
-    pass
+class Knight(Character):
+
+    def _take_physical_damage(self, amount):
+        return super()._take_physical_damage(round(0.75*amount))
+
+    def _get_caused_dmg(self, other):
+        return round(0.8*super()._get_caused_dmg(other))
