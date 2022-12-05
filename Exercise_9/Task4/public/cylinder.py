@@ -4,16 +4,30 @@ from public.geometric_object import GeometricObject
 class Cylinder(GeometricObject):
 
     def __init__(self, radius, height, color, filled):
-        pass
+        super().__init__(color=color, filled=filled)
+        if type(radius) == int:
+            self.__radius = float(radius)
+        else:
+            self.__radius = radius
+        if type(height) == int:
+            self.__height = float(height)
+        else:
+            self.__height = height
+        if type(self.__radius) != float or type(self.__height) != float:
+            raise Warning("Invalid input type")
 
     def get_radius(self):
-        pass
+        radius = float()
+        radius = self.__radius
+        return radius
 
     def get_height(self):
-        pass
+        height = float()
+        height = self.__height
+        return height
 
     def get_area(self):
-        pass
+        return round(2*3.14*self.__radius*(self.__radius + self.__height), 2)
 
     def get_volume(self):
-        pass
+        return round(3.14*self.__radius**2*self.__height, 2)
